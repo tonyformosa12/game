@@ -1,0 +1,80 @@
+此處紀錄所有class裡包含的method及各項功能
+
+=======(creature.rb)======================
+
+>>>>>>>>>>>>>>>>>Creature(生物)<<<<<<<<<<<<<<<<<<<<
+
+    class Creature      #為所有生物之基礎
+        initialize
+            hp,mp,atk,def,name為建立物件時必須引入之值
+            myClass為hash,存放三種職業(key)以及其對應之值(value)
+
+        injured(damage)     #定義受傷害及扣血,目前尚未增加判定死亡之功能,將減少接收者之hp
+
+        attack(another=0)     #代入接收者之atk,並從外界引入額外傷害,回傳result(to_i)
+
+        defense(another)    #功能同上
+        
+        turnHeal()      #回血,直接反應在接收者之hp
+
+
+
+ 
+>>>>>>>>>>>>>>>>Human(人類)<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+    class Human < Creature      #萬惡的人類
+
+        classChoose()   #put選擇職業之文字,並在claseName保存職業名
+
+        equipmentUsing(atk-0,defs=0,hp=0,mp=0)  引入值引入裝備之性能,直接加在接收者之屬性
+
+
+
+
+>>>>>>>>>>>>>>>>>Monster(怪物)<<<<<<<<<<<<<<<<<<<<<<<<<
+
+    class Monster < Creature
+
+        initialize()    #使用accessor來指定怪物之職階,變數名為career
+
+
+
+
+================gameRule.rb========================
+
+>>>>>>>>>>>>>>>>>>>GameRule(遊戲規則及各項功能)<<<<<<<<<<<<<<<<<<<<<<<
+
+    class GameRule
+        
+        GameRule.seeStatus(playerobj)   #將印出玩家狀態（之後將併入window類別）
+
+
+
+
+=================hajime.rb==========================
+
+>>>>>>>>>>>>>>>>Hajime(起始)<<<<<<<<<<<<<<<<<
+
+    class Hajime
+
+        Hajime.infoSan()    #我是說明君,將併入window
+
+        Hajime.startToTatakae()    #開始戰鬥,將併入window
+    
+        defineName()    #輸入名字,將puts確認loop,部份將併入window
+
+
+
+
+==================windows.rb========================
+
+>>>>>>>>>>>>>>>Window(視窗)<<<<<<<<<<<<<<<<<<<<<<<
+
+    class Window
+        
+        Window.defaultWindow(*msg,topmsg)  #預設輸入法,topmsg會在最上面顯示
+
+        Window.statusWatching(creature)     #屬性訊息界面,只須傳入對象
+
+
+
